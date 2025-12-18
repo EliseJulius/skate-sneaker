@@ -36,13 +36,13 @@
   <!-- RIGHT NAV -->
   <nav class="nav-right">
     <a href="#">Lifestyle</a>
-    <a href="#">Order</a>
+    <a href="order.html">Order</a>
   </nav>
 </header>
 
 <main class="order-container">
     <section class="order-form-section">
-        <h2 class="section-title">01. THÔNG TIN ĐẶT GIÀY</h2>
+        <h2 class="section-title">THÔNG TIN ĐẶT GIÀY</h2>
         <form id="orderForm" class="sneaker-form">
             <div class="input-group">
                 <input type="text" id="fullname" name="fullname" placeholder="Họ và tên" required>
@@ -81,11 +81,9 @@
                 Chúng tôi xem trọng quyền riêng tư của bạn. Vui lòng nhập chính xác thông tin để quá trình giao hàng diễn ra thuận lợi nhất.
             </p>
 
-            <button type="submit" class="btn-submit">SAVE & CONTINUE</button>
+            <button type="submit" class="btn-submit">ĐẶT HÀNG</button>
         </form>
 
-        <h2 class="section-title disabled">02. THANH TOÁN</h2>
-        <h2 class="section-title disabled">03. BẢN ĐỒ CỬA HÀNG</h2>
         </section>
 
     <aside class="order-summary-section">
@@ -157,3 +155,12 @@
 <script src="script.js"></script>
 </body>
 </html>
+
+<div id="successModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+        <h3>ĐẶT HÀNG THÀNH CÔNG</h3>
+        <p>Cảm ơn bạn đã tin tưởng SKATE. Chúng tôi sẽ liên hệ với bạn trong vòng 24h tới.</p>
+        <button id="closeModal" class="btn-submit">ĐÓNG</button>
+    </div>
+</div>
