@@ -51,10 +51,10 @@ header {
 /* Nav Links Container */
 header nav {
   display: flex;
-  gap: 56px; 
+  gap: 40px; 
+  margin-left: auto;
 }
 
-.nav-left { justify-content: flex-start; }
 .nav-right { justify-content: flex-end; }
 
 /* Nav Link Items */

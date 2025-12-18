@@ -8,8 +8,8 @@
 
   <!-- FONT & CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="order.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/order.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -17,12 +17,6 @@
 <body>
   <!-- HEADER -->
 <header>
-  <!-- LEFT NAV -->
-  <nav class="nav-left">
-    <a href="#">Women</a>
-    <a href="#">Men</a>
-    <a href="#">Kid</a>
-  </nav>
 
   <!-- LOGO CENTER -->
   <a href="index.html" class="logo-link">
@@ -35,7 +29,9 @@
 
   <!-- RIGHT NAV -->
   <nav class="nav-right">
+	<a href="san-pham.html">Products</a>
     <a href="#">Lifestyle</a>
+	<a href="aboutus.html">About us</a>
     <a href="order.html">Order</a>
   </nav>
 </header>
@@ -108,8 +104,8 @@
                 </div>
             </div>
 
-            <div id="no-product" style="display: none; text-align: center; padding: 40px 0;">
-                <p style="color: #2C365A; margin-bottom: 20px; font-style: italic;">Bạn chưa chọn sản phẩm nào để đặt hàng.</p>
+            <div id="no-product" style="display: none; text-align: center; padding: 20px 0;">
+                <p style="color: #2C365A; margin-bottom: 40px; font-style: italic;">Bạn chưa chọn sản phẩm nào để đặt hàng.</p>
                 <a href="products.html" class="btn-back-shop">QUAY LẠI CỬA HÀNG</a>
             </div>
         </div>
@@ -125,8 +121,8 @@
       <div class="footer-column footer-right">
         <a href="#" class="footer-link">Products</a>
         <a href="#" class="footer-link">Lifestyle</a>
-        <a href="#" class="footer-link">About us</a>
-        <a href="#" class="footer-link">Order</a>
+        <a href="aboutus.html" class="footer-link">About us</a>
+        <a href="order.html" class="footer-link">Order</a>
       </div>
 
       <div class="social-block footer-right">
@@ -152,7 +148,8 @@
 
 </footer>
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
+<script src="js/order.js"></script>
 </body>
 </html>
 

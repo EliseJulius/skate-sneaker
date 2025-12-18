@@ -4,11 +4,12 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About us | Skate</title>
+  <title>Order | Skate</title>
 
   <!-- FONT & CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/order.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -16,12 +17,6 @@
 <body>
   <!-- HEADER -->
 <header>
-  <!-- LEFT NAV -->
-  <nav class="nav-left">
-    <a href="#">Women</a>
-    <a href="#">Men</a>
-    <a href="#">Kid</a>
-  </nav>
 
   <!-- LOGO CENTER -->
   <a href="index.html" class="logo-link">
@@ -34,8 +29,9 @@
 
   <!-- RIGHT NAV -->
   <nav class="nav-right">
+	<a href="san-pham.html">Products</a>
     <a href="#">Lifestyle</a>
-    <a href="#">Order</a>
+    <a href="order.html">Order</a>
   </nav>
 </header>
 
@@ -50,8 +46,8 @@
       <div class="footer-column footer-right">
         <a href="#" class="footer-link">Products</a>
         <a href="#" class="footer-link">Lifestyle</a>
-        <a href="#" class="footer-link">About us</a>
-        <a href="#" class="footer-link">Order</a>
+        <a href="aboutus.html" class="footer-link">About us</a>
+        <a href="order.html" class="footer-link">Order</a>
       </div>
 
       <div class="social-block footer-right">
@@ -77,6 +73,15 @@
 
 </footer>
 
-
+<script src="js/script.js"></script>
 </body>
 </html>
+
+<div id="successModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+        <h3>ĐẶT HÀNG THÀNH CÔNG</h3>
+        <p>Cảm ơn bạn đã tin tưởng SKATE. Chúng tôi sẽ liên hệ với bạn trong vòng 24h tới.</p>
+        <button id="closeModal" class="btn-submit">ĐÓNG</button>
+    </div>
+</div>

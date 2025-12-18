@@ -137,7 +137,6 @@
     opacity: 0.8;
 }
 
-
 .section-title.disabled {
     pointer-events: none;
 }
@@ -148,7 +147,6 @@
     display: none; 
     margin-top: 5px;
 }
-
 
 .input-row {
     display: flex;

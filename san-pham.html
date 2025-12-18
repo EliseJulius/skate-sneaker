@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans..." rel="stylesheet">
+      <link rel="stylesheet" href="css/base.css">
+    <style>
+        :root {
+            --bg-color: #EEE8DF; 
+            --text-color: #070707;
+            --sidebar-width: 350px;
+            --body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
+
+        /* --- 1. HEADER (PLACEHOLDER) --- */
+        header.placeholder-header { height: 80px; /* Chừa chỗ cho header */ }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .toolbar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #000000;
+            margin-bottom: 20px;
+        }
+
+        .search-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-icon {
+            width: 18px;
+            height: 18px;
+            stroke: #333;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .search-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #333;
+            width: 200px;
+        }
+
+        .search-input:focus::placeholder { color: transparent; }
+
+        .filter-trigger {
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .category-nav {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-item.active {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            border: none; 
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .img-placeholder {
+            width: 350px;
+            height: 400px; 
+            background-color: #D8D3CD; 
+            position: relative;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.5s ease; 
+        }
+
+        .img-placeholder:hover .product-img {
+        transform: scale(1.1);
+         }
+        
+        .add-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.5);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 18px;
+            color: #5f5f5f;
+        }
+
+        .p-name { font-size: 14px; font-weight: bold; margin-bottom: 5px; }
+        .p-price { font-size: 12px; color: #555; }
+
+    
+        .img-placeholder:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 15px rgba(0,0,0,0.05); 
+        }
+        .product-card:hover {
+            transform: translateY(-5px); 
+        }
+
+
+        /* --- SIDEBAR BỘ LỌC (JQUERY) --- */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 1   00%; height: 100%;
+            background: rgba(0,0,0,0.2); 
+            z-index: 900;
+            display: none; 
+        }
+
+        .filter-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%; 
+            width: var(--sidebar-width);
+            height: 100%;
+            background: #EBE8E4; 
+            z-index: 1000;
+            padding: 40px 30px;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.05);
+            overflow-y: auto;
+        }
+
+        .filter-group-vertical {
+            display: block !important; 
+            margin-bottom: 35px;
+        }
+
+        .filter-group-vertical .f-title {
+            width: 100%;     
+            margin-bottom: 15px; 
+        }
+
+        .filter-group-vertical .f-options {
+            width: 100%;     
+        }
+
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; }
+        .filter-group {
+            display: flex; 
+            align-items: flex-start;
+            margin-bottom: 35px;
+        }
+
+        .f-title {
+            width: 35%;    
+            font-size: 12px;
+            font-weight: bold;
+            display: block;   
+        
+        }
+
+        .f-options {
+            width: 65%;          
+            display: flex;
+            flex-direction: column; 
+            gap: 8px;           
+        }
+        
+        .f-options div {
+            font-size: 13px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            color: #555;
+            transition: font-weight 0.2s;
+        }
+
+        .f-options div.selected {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .price-slider {
+            width: 100%; height: 2px; background: #999;
+            position: relative; margin: 15px 0;
+        }
+        .slider-dot {
+            width: 10px; height: 10px; background: #000; border-radius: 50%;
+            position: absolute; top: -4px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .act-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #aaa;
+            background: transparent;
+            text-align: center;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            opacity: 0.4; 
+            transition: opacity 0.3s, font-weight 0.3s;
+        }
+
+        .act-btn:hover {
+            opacity: 1;
+            font-weight: bold;
+            border-color: #000;
+        }
+
+        .color-box {
+        width: 18px; height: 18px;
+        display: inline-block;
+        border: 1px solid rgba(0,0,0,0.1);}
+
+        
+        footer.placeholder-footer { height: 150px; margin-top: 50px; /* Chừa chỗ footer */ }
+
+    </style>
+</head>
+<body>
+
+      <!-- HEADER -->
+<header>
+
+  <!-- LOGO CENTER -->
+  <a href="index.html" class="logo-link">
+    <img
+      src="media/logo/Artboard_14x.png"
+      alt="Skate Logo"
+      class="logo"
+    />
+  </a>
+
+  <!-- RIGHT NAV -->
+  <nav class="nav-right">
+	<a href="san-pham.html">Products</a>
+    <a href="#">Lifestyle</a>
+	<a href="aboutus.html">About us</a>
+    <a href="order.html">Order</a>
+  </nav>
+</header>
+
+    <div class="container">
+        <div class="toolbar-top">
+            <div class="search-wrap">
+                <svg class="search-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="search-input" placeholder="Tìm kiếm">
+            </div>
+            <div class="filter-trigger">Bộ lọc</div>
+        </div>
+
+        <ul class="category-nav">
+            <li class="nav-item" data-filter="woman">Woman</li>
+            <li class="nav-item" data-filter="man">Man</li>
+            <li class="nav-item" data-filter="kid">Kid</li>
+            <li class="nav-item active" data-filter="all">Home</li>
+        </ul>
+
+        <div class="product-grid">
+            <div class="product-card"
+                data-category="man" 
+                data-size="41" 
+                data-brand="Zara" 
+                data-price="20000000"
+                data-type="high-top"
+                data-color="xanh-la">
+
+                <div class="img-placeholder">
+                    <a href="sp1.html">
+                    <div class="img-placeholder">
+                        <img src="img/12105620500-e1.jpg" 
+                        class="product-img">
+                    </div>
+                </a>
+                <div class="add-btn">+</div></div>
+                <div class="p-name">RECCO® WATERPROOF HIKING BOOTS</div>
+                <div class="p-price">2.000.000 vnđ</div>
+            </div>
+
+            <div class="product-card"
+                data-category="woman" 
+                data-size="37" 
+                data-type="low-top"
+                data-brand="niken" 
+                data-color="nau"
+                data-price="400000">
+
+                <div class="img-placeholder">
+                    <a href="sp2.html">
+                    <div class="img-placeholder">
+                        <img src="img/15609610025-e1.jpg" 
+                        class="product-img">
+                    </div>
+                </a>
+                <div class="add-btn">+</div></div>
+                <div class="p-name">ELASTIC TRAINERS</div>
+                <div class="p-price">400.000 vnđ</div>
+            </div>
+
+            <div class="product-card"
+                data-category="kid" 
+                data-size="36" 
+                data-brand="niken" 
+                data-type="low-top"
+                data-color="vang"
+                data-price="200000">
+
+                <div class="img-placeholder">
+                   <a href="sp3.html">
+                    <div class="img-placeholder">
+                        <img src="img/16313630105-e1.jpg" 
+                        class="product-img">
+                    </div>
+                    </a>
+                <div class="add-btn">+</div></div>
+                <div class="p-name">RETRO TRAINERS</div>
+                <div class="p-price">200.000 vnđ</div>
+            </div>
+
+            <div class="product-card"
+                data-category="kid" 
+                data-size="36" 
+                data-brand="Calvin" 
+                data-color="be"
+                data-type="low-top"
+                
+                data-price="250000">
+
+                <div class="img-placeholder">
+                    <a href="sp4.html">
+                    <div class="img-placeholder">
+                        <img src="img/18819630050-e1.jpg" 
+                        class="product-img">
+                    </a>
+                    </div>
+                <div class="add-btn">+</div></div>
+                <div class="p-name">BAREFOOT COLOURED TRAINERS</div>
+                <div class="p-price">250.000 vnđ</div>
+            </div>
+
+            <div class="product-card"
+                data-category="man" 
+                data-size="40" 
+                data-brand="Zara" 
+                data-type="low-top"
+                data-color="be"
+                data-price="1200000">
+
+                <div class="img-placeholder">
+                    <a href="sp5.html">
+                    <div class="img-placeholder">
+                        <img src="img/M9604564706-p.jpg" 
+                        class="product-img">
+                    </div>
+                    </a>
+                <div class="add-btn">+</div></div>
+                <div class="p-name">LEATHER TRAINERS WITH CONTRAST SOLE</div>
+                <div class="p-price">1.200.000 vnđ</div>
+            </div>
+
+            <div class="product-card"
+                data-category="woman" 
+                data-size="39" 
+                data-brand="Calvin" 
+                data-type="low-top"
+                data-color="xanh-la"
+                data-price="3750000">
+
+                <div class="img-placeholder">
+                    <a href="sp6.html">
+                    <div class="img-placeholder">
+                        <img src="img/15427610500-e1.jpg" 
+                        class="product-img">
+                    </div>
+                    </a>
+                <div class="add-btn">+</div></div>
+                <div class="p-name">COLOURFUL TRAINERS</div>
+                <div class="p-price">3.750.000 vnđ</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-overlay"></div>
+
+    <div class="filter-sidebar">
+        <div class="close-btn">&times;</div>
+        
+        <div class="filter-group">
+            <span class="f-title">Giá</span>
+            <div class="f-options">
+                <div class="filter-option sort-option" data-type="price" data-value="asc">Tăng dần</div>
+                <div class="filter-option sort-option" data-type="price" data-value="desc">Giảm dần</div>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <span class="f-title">Size</span>
+            <div class="f-options">
+                <div class="filter-option" data-type="size" data-value="36">36</div>
+                <div class="filter-option" data-type="size" data-value="37">37</div>
+                <div class="filter-option" data-type="size" data-value="38">38</div>
+                <div class="filter-option" data-type="size" data-value="39">39</div>
+                <div class="filter-option" data-type="size" data-value="40">40</div> 
+                <div class="filter-option" data-type="size" data-value="41">41</div>
+                <div class="filter-option" data-type="size" data-value="42">42</div>         
+            </div>
+        </div>
+
+        <div class="filter-group">
+        <div class="f-title">Màu sắc</div>
+        <div class="f-options">
+            <div class="filter-option" data-type="color" data-value="be">
+                <span class="color-box" style="background:#D8D0C5;"></span> Be
+            </div>
+            <div class="filter-option" data-type="color" data-value="den">
+                <span class="color-box" style="background:#1A1A1A;"></span> Đen
+            </div>
+            <div class="filter-option" data-type="color" data-value="xanh-duong">
+                <span class="color-box" style="background:#8DA4C8;"></span> Xanh dương
+            </div>
+            <div class="filter-option" data-type="color" data-value="nau">
+                <span class="color-box" style="background:#795548;"></span> Nâu
+            </div>
+            <div class="filter-option" data-type="color" data-value="xanh-la">
+                <span class="color-box" style="background:#8FA47B;"></span> Xanh lá
+            </div>
+            <div class="filter-option" data-type="color" data-value="vang">
+                <span class="color-box" style="background:#E8D585;"></span> Vàng
+            </div>
+             <div class="filter-option" data-type="color" data-value="cam">
+                <span class="color-box" style="background:#E69C3D;"></span> Cam
+            </div>
+        </div>
+    </div>
+
+        <div class="filter-group">
+                <div class="f-title">Loại</div>
+                <div class="f-options">
+                    <div class="filter-option" data-type="type" data-value="low-top">Low-Top</div>
+                    <div class="filter-option" data-type="type" data-value="mid-top">Mid-Top</div>
+                    <div class="filter-option" data-type="type" data-value="high-top">High-Top</div>
+                    <div class="filter-option" data-type="type" data-value="slip-on">Slip-on</div>
+                </div>
+            </div>
+
+        <div class="filter-group">
+            <span class="f-title">Thương hiệu</span>
+            <div class="f-options">
+                <div class="filter-option" data-type="brand" data-value="Calvin">Calvin</div>
+                <div class="filter-option" data-type="brand" data-value="niken">Niken</div>
+                <div class="filter-option" data-type="brand" data-value="Zara">Zara</div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="act-btn">Hoàn tác</button>
+            <button class="act-btn" id="btn-apply">Áp dụng</button>
+        </div>
+    </div>
+
+        <footer id="site-footer">
+
+    <script>
+        $(document).ready(function(){
+
+            $(".search-input").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+
+                $(".product-card").each(function() {
+                    var productName = $(this).find(".p-name").text().toLowerCase();
+
+                    if (productName.indexOf(value) > -1) {
+                        $(this).fadeIn();
+                    } else {
+                        $(this).hide();   
+                    }
+                });
+            });
+
+            $(".product-card").each(function(index){
+            $(this).attr("data-original-index", index);
+             });
+
+            $(".filter-trigger").click(function(){
+                $(".sidebar-overlay").fadeIn(300);
+                $(".filter-sidebar").css("right", "0");
+            });
+
+            $(".close-btn, .sidebar-overlay").click(function(){
+                $(".filter-sidebar").css("right", "-100%");
+                $(".sidebar-overlay").fadeOut(300);
+            });
+
+            $(".nav-item").click(function(){
+                $(".nav-item").removeClass("active"); 
+                $(this).addClass("active"); 
+                var category = $(this).attr("data-filter");
+                if(category == "all") {
+                    $(".product-card").fadeIn(); 
+                } else {
+                    $(".product-card").hide();
+                    $('.product-card[data-category="' + category + '"]').fadeIn(700);
+                }
+            });
+
+            $(".filter-option:not(.sort-option)").click(function(){
+                $(this).toggleClass("selected"); 
+            });
+
+            $(".sort-option").click(function(){
+                if($(this).hasClass("selected")){
+                    $(this).removeClass("selected");
+                } else {
+                    $(".sort-option").removeClass("selected");
+                    $(this).addClass("selected");
+                }
+            });
+
+            $("#btn-apply").click(function(){
+                var selectedSizes = [];
+                var selectedBrands = [];
+                var selectedTypes = [];
+                var selectedColors = [];
+
+                $('.filter-option.selected[data-type="size"]').each(function(){
+                    selectedSizes.push($(this).attr("data-value"));
+                });
+
+                $('.filter-option.selected[data-type="brand"]').each(function(){
+                    selectedBrands.push($(this).attr("data-value")); 
+                });
+
+                $('.filter-option.selected[data-type="type"]').each(function(){
+                    selectedTypes.push($(this).attr("data-value")); 
+                });
+
+                $('.filter-option.selected[data-type="color"]').each(function(){
+                    selectedColors.push($(this).attr("data-value"));
+                });
+
+                $(".product-card").each(function(){
+                    var product = $(this);
+                    var pSize = product.attr("data-size");
+                    var pBrand = product.attr("data-brand"); 
+                    var pType = product.attr("data-type");
+                    var pColor = product.attr("data-color");
+
+                    var showSize = true;
+                    var showBrand = true;
+                    var showTypes = true;
+                    var showColor = true;
+
+                    if(selectedSizes.length > 0) {
+                        if(!selectedSizes.includes(pSize)) { showSize = false; }
+                    }
+
+                    if(selectedBrands.length > 0) {
+                        var isBrandFound = selectedBrands.some(b => b.toLowerCase() === pBrand.toLowerCase());
+                        if(!isBrandFound) { showBrand = false; }
+                    }
+
+                    if(selectedTypes.length > 0) {
+                        if(!selectedTypes.includes(pType)) { 
+                            showTypes = false; 
+                        }
+                    }
+
+                    if(selectedColors.length > 0) {
+                        if(!selectedColors.includes(pColor)) { showColor = false; }
+                    }
+                    
+                    if(showSize && showBrand && showTypes && showColor) {
+                        product.fadeIn();
+                    } else {
+                        product.hide();
+                    }
+                });
+
+                var sortMode = $('.sort-option.selected').attr('data-value'); 
+                
+                if(sortMode) {
+                    var container = $('.product-grid');
+                    var items = container.children('.product-card');
+
+
+                    items.sort(function(a, b){
+                        var priceA = parseInt($(a).attr('data-price'));
+                        var priceB = parseInt($(b).attr('data-price'));
+
+                        if(sortMode === 'asc') {
+                            return priceA - priceB; 
+                        } else {
+                            return priceB - priceA; 
+                        }
+                    });
+
+                    container.append(items);
+                }
+
+
+                $(".filter-sidebar").css("right", "-100%");
+                $(".sidebar-overlay").fadeOut();
+            });
+
+            $(".act-btn:contains('Hoàn tác')").click(function(){
+                $(".filter-option").removeClass("selected");
+                $(".product-card").fadeIn();
+            });
+        });
+    </script>
+</body>
+</html>
