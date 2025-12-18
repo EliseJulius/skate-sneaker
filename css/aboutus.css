@@ -112,7 +112,7 @@
     font-size: var(--size-section-title); /* Hoặc nhập thẳng 32px */
     color: #2C365A;
     margin-bottom: 24px;
-    font-weight: 600;
+    font-weight: 800;
     text-transform: uppercase;
 }
 
@@ -125,7 +125,7 @@
 }
 
 .about-quote {
-    font-size: 20px;      /* Chỉnh size chữ Quote */
+    font-size: 25px;      /* Chỉnh size chữ Quote */
     font-style: italic;
     font-weight: 500;
     color: #2C365A;
@@ -137,8 +137,179 @@
 
 .story-block {
     text-align: right;
-	padding-top: 20px;
+	padding-top: 60px;
 }
 .story-block h3 {
     text-align: right;
+}
+.about-story-46 {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    gap: 60px;
+    align-items: start; 
+}
+
+.story-text {
+    text-align: left;
+    /* Xóa bỏ padding-top nếu có để chữ sát mép trên */
+    padding-top: 0; 
+}
+
+/* Định dạng ảnh bên trái */
+.story-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Bạn có thể thêm border-radius: 8px; nếu muốn góc bo tròn */
+}
+/* Định dạng chữ bên phải */
+.story-text {
+    text-align: left; /* Căn trái cho nội dung này */
+}
+
+.story-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #4A4A4A;
+    margin-bottom: 15px;
+}
+
+.about-cta {
+    width: 100%;
+    padding: 100px 0;
+    background-color: #F8F9FA; /* Màu nền xám cực nhạt */
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 700px;
+    padding: 0 20px;
+}
+
+.cta-content h2 {
+    font-size: 32px;
+    color: #2C365A;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Nút bấm điều hướng */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    background-color: #2C365A;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.cta-button svg {
+    transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng Hover */
+.cta-button:hover {
+    background-color: #1a223d;
+    padding-right: 50px; /* Nút dài ra một chút khi hover */
+    box-shadow: 0 10px 20px rgba(44, 54, 90, 0.2);
+}
+
+.cta-button:hover svg {
+    transform: translateX(8px); /* Mũi tên dịch chuyển sang phải */
+}
+
+/* Hiệu ứng Đen trắng sang Màu */
+.grid-item img {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.grid-item:hover img {
+    filter: grayscale(0%); /* Hiện màu */
+    transform: translateY(-5px); /* Nhấc nhẹ ảnh lên */
+}
+
+/* Áp dụng cho: Grid 3 ô, Ảnh phần 6:4 và Ảnh phần 4:6 */
+.grid-item, .info-img, .story-img {
+    overflow: hidden; 
+    background-color: #000; /* Nền đen để ảnh tối trông sâu hơn */
+    display: block; /* Đảm bảo khối bao quanh chuẩn */
+}
+
+/* Định dạng ảnh mặc định (Hơi tối) */
+.info-img img, .story-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: all 0.5s ease;
+    filter: brightness(0.7); /* Mặc định ảnh hơi tối */
+}
+
+/* Hiệu ứng khi Hover (Sáng lên và Phóng to nhẹ) */
+.info-img:hover img, 
+.story-img:hover img {
+    filter: brightness(1); /* Sáng rực rỡ */
+    transform: scale(1.05); /* Phóng to nhẹ */
+}
+/* Style cơ bản cho tiêu đề cần animation */
+.animate-title {
+    position: relative;
+    display: inline-block; /* Quan trọng: để đường kẻ chỉ dài bằng chữ */
+    padding-bottom: 8px;   /* Khoảng cách giữa chữ và gạch chân */
+    cursor: pointer;
+}
+
+/* Tạo đường gạch chân bằng pseudo-element ::after */
+.animate-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;          /* Độ dài mặc định ban đầu của gạch chân */
+    height: 2px;          /* Độ dày của đường kẻ */
+    background-color: #2C365A; /* Màu xanh Navy thương hiệu */
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Hiệu ứng mượt mà */
+}
+
+/* Hiệu ứng khi Hover vào tiêu đề */
+.animate-title:hover::after {
+    width: 100%;          /* Gạch chân dài ra hết chữ khi hover */
+}
+
+/* Riêng phần Story nếu bạn muốn căn phải gạch chân (vì text căn phải) */
+.story-block .animate-title::after {
+    left: auto;
+    right: 0;             /* Đẩy gạch chân sang phải */
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-title {
+    animation: fadeInUp 1s ease forwards;
 }
