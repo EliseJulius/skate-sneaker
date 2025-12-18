@@ -21,7 +21,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px; /* sát margin web */
+  padding: 0 80px; 
   box-sizing: border-box;
   position: relative;
 }
@@ -42,12 +42,12 @@ header {
 /* NAV COMMON */
 header nav {
   display: flex;
-  gap: 56px; /* spacing xa nhau */
+  gap: 56px; 
 }
 
 header nav a {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   color: #313D65;
   text-decoration: none;
@@ -93,7 +93,6 @@ header nav a:hover {
   font-size: 20px;
   font-weight: 400;
   color: #2C365A;
-  font-family: 'Plus Jakarta Sans', sans-serif;
   text-decoration: none;
   transition: opacity 0.2s;
 }
@@ -152,7 +151,6 @@ header nav a:hover {
   justify-content: space-between;
   align-items: center;
 
-  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 16px;
   color: #2C365A;
 }
