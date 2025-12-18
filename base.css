@@ -81,12 +81,11 @@ header nav a:hover {
   margin-left: 50px;
 }
 
-/* COLUMN: Menu / News / About / Career */
 .footer-column {
   display: flex;
   flex-direction: column;
   gap: 23px;
-  margin-left: 180px;
+  margin-left: 80px;
 }
 
 .footer-link {
