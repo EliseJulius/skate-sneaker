@@ -14,21 +14,71 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-
-/* FOOTER WRAPPER */
-.footer-logo {
+/* HEADER */
+header {
   width: 100%;
-  padding: 120px 0;
+  height: 72px;
   display: flex;
-  align-items: flex-start;
-  background: #ffffff;
-  transform: translateY(-50px);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px; /* sát margin web */
+  box-sizing: border-box;
+  position: relative;
 }
 
+/* LOGO */
+.logo-link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* NAV COMMON */
+header nav {
+  display: flex;
+  gap: 56px; /* spacing xa nhau */
+}
+
+header nav a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #313D65;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+
+header nav a:hover {
+  opacity: 0.6;
+}
+
+/* LEFT & RIGHT ALIGN */
+.nav-left {
+  justify-content: flex-start;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+
+/* FOOTER WRAPPER */
+.footer-logo{
+	display:grid;
+	grid-template-columns:auto 1fr 1fr;
+	margin-bottom: 40px;
+}
 /* FOOTER LOGO */
 .footer-logo img {
-  width: 350px;
-  margin-left: 40px;
+  width: 450px;
+  margin-left: 50px;
 }
 
 /* COLUMN: Menu / News / About / Career */
@@ -36,7 +86,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 23px;
-  margin-left: 400px;
+  margin-left: 180px;
 }
 
 .footer-link {
