@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skatro - Soul on Soles</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section class="hero reveal">
+        <div class="container">
+            <h1>Soul on Soles</h1>
+            <p>Put your soul on your soles, and let the world feel the beat of your stride.</p>
+            <a href="san-pham.html" class="btn-link">Shopping ngay</a>
+        </div>
+    </section>
+
+    <section class="dual-slider reveal">
+        <div class="slider-wrapper">
+            <div class="slider-box" id="slider-left">
+                <div class="slides">
+                    <img src="media/picleft1.png" alt="picleft1.png">
+                    <img src="media/picleft2.png" alt="picleft2.png">
+                    <img src="media/picleft3.png" alt="picleft3.png">
+                </div>
+                <div class="slider-info">
+                    <h3>Men's collection</h3>
+                    <p>Mạnh mẽ, cá tính</p>
+                </div>
+                <button class="next-btn" onclick="moveSlider('slider-left')"><span></span></button>
+                <div class="dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+
+            <div class="slider-box" id="slider-right">
+                <div class="slides">
+                    <img src="media/picright1.png" alt="picright1.png">
+                    <img src="media/picright2.png" alt="picright2.png">
+                    <img src="media/picright3.png" alt="picright3.png">
+                </div>
+                <div class="slider-info">
+                    <h3>Women's collection</h3>
+                    <p>Phóng khoáng, năng động</p>
+                </div>
+                <button class="next-btn" onclick="moveSlider('slider-right')"><span></span></button>
+                <div class="dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="kids-banner reveal">
+        <img src="media/kidbanner.png" alt="Kid Squad Banner" class="banner-bg-img">
+        <div class="banner-content">
+            <h2>KID'S SQUAD CAN BE COOL TOO</h2>
+            <p>Bộ sưu tập dành riêng cho các bé năng động</p>
+        </div>
+    </section>
+
+    <section class="hot-pick reveal">
+    <div class="hot-pick-container" id="slider-hot">
+        <div class="slides">
+            <img src="media/hot1.png" alt="hot1.png">
+            <img src="media/hot2.png" alt="hot2.png">
+            <img src="media/hot3.png" alt="hot3.png">
+        </div>
+        
+        <div class="hot-content">
+            <h2>THIS DECEMBER<br>HOT PICK</h2>
+            <a href="san-pham.html" class="btn-discover">Khám phá ngay</a>
+        </div>
+
+        <button class="next-btn" onclick="moveSlider('slider-hot')"><span></span></button>
+        
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+</section>
+
+    <section class="blog-banner reveal">
+        <div class="blog-image-wrapper">
+            <img src="media/blog.png" alt="banner_blog.png">
+            <div class="blog-text">
+                <h3>The Journal</h3>
+                <p>Những câu chuyện về lối sống mới và phong cách sáng tạo</p>
+                <a href="blog.html" class="btn-discover">Khám phá</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="logos reveal">
+        <div class="logo-container">
+            <img src="media/cklogo.png" alt="CK Logo">
+            <img src="media/zaralogo.png" alt="Zara Logo">
+            <img src="media/nikelogo.png" alt="Nike Logo">
+        </div>
+    </section>
+
+    <script src="home.js"></script>
+</body>
+</html>

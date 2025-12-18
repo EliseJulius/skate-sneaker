@@ -1,0 +1,309 @@
+:root {
+    --primary-color: #313D65;
+    --bg-light: #F2F0EB; 
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--primary-color);
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+}
+
+/* Hiệu ứng Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    height: 916px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 80px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn-link {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* Dual Slider Section (Slider phía trên - Giữ nguyên 800px) */
+.dual-slider {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.slider-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.slider-box {
+    width: 800px; 
+    height: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: var(--transition-smooth);
+    height: 100%;
+}
+
+.slides img, .slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Info & Controls dùng chung cho các slider */
+.slider-info {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: white;
+}
+
+.next-btn {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border: 2.5px solid white;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.next-btn span::before {
+    content: '→';
+    color: white;
+    font-size: 24px;
+}
+
+.dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 5;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: white;
+}
+
+/* Kids Banner */
+.kids-banner {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0;
+    color: white;
+}
+
+.banner-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.kids-banner h2 {
+    font-size: 60px;
+}
+
+/* --- Hot Pick Section (Đã cập nhật) --- */
+.hot-pick {
+    width: 100%;
+    height: 686px; /* Cố định chiều cao đúng file ảnh */
+    position: relative;
+    overflow: hidden;
+}
+
+.hot-pick-container {
+    height: 100%;
+    width: 100%;
+}
+
+/* Đảm bảo ảnh Hot Pick hiện đúng tỉ lệ, không bị zoom chà bá */
+#slider-hot .slides img {
+    height: 686px;    
+    width: 100vw;     
+    object-fit: contain; /* Đổi sang contain để hiện trọn vẹn ảnh thiết kế */
+    background-color: #F2F0EB; /* Nền sáng để bù đắp nếu màn hình quá rộng */
+}
+
+/* Nội dung chữ Hot Pick */
+#slider-hot .hot-content {
+    position: absolute;
+    top: 50%;
+    left: 8%; 
+    transform: translateY(-50%);
+    color: white;
+    z-index: 10;
+}
+
+#slider-hot .hot-content h2 {
+    font-size: 60px; /* Giảm nhẹ để cân đối với chiều cao 686px */
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* Nút Next của Hot Pick */
+#slider-hot .next-btn {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 40px;
+}
+
+/* Dấu chấm của Hot Pick */
+#slider-hot .dots {
+    bottom: 30px;
+}
+
+.btn-discover {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-discover:hover {
+    background: white;
+    color: var(--primary-color);
+}
+
+/* --- Blog Banner (Mở rộng chiều rộng để giảm nền trắng 2 bên) --- */
+.blog-banner {
+    padding: 100px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.blog-image-wrapper {
+    position: relative;
+    /* Tăng width từ 90% lên 100% để sát lề hoặc 96% để còn một chút khoảng hở */
+    width: 100%; 
+    /* Tăng max-width để ảnh có thể nở to ra trên màn hình lớn */
+    max-width: 1920px; 
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.blog-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.blog-text {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    text-align: left;
+    color: white;
+    z-index: 10;
+}
+
+.blog-text h3 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.blog-text p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    max-width: 450px;
+    line-height: 1.5;
+}
+
+.blog-text .btn-discover {
+    border: 1px solid white;
+    padding: 10px 25px;
+}
+
+/* Logo Collab */
+.logos {
+    padding: 100px 0;
+    background: white;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.logo-container img {
+    height: 40px;
+    filter: grayscale(1);
+    opacity: 0.7;
+}

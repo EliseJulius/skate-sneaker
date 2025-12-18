@@ -1,0 +1,34 @@
+/* --- Blog Banner Simple (Đã sửa lỗi hiển thị) --- */
+.blog-banner-simple {
+    width: 100%;
+    /* Bỏ display: flex nếu không cần căn giữa các khối con phức tạp */
+    padding: 20px 0; 
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều rộng thực tế */
+}
+
+.blog-image-container {
+    width: 100%;
+    max-width: 100%; /* Đảm bảo không vượt quá màn hình */
+    margin: 0 auto;
+    overflow: hidden;
+    display: block;
+}
+
+.blog-image-container img {
+    /* Sử dụng max-width thay vì width để tránh ép kích thước quá mức */
+    width: 100%; 
+    height: auto; /* Giữ đúng tỉ lệ ảnh, không bị méo */
+    display: block;
+    
+    /* Chế độ hiển thị: 
+       'contain' sẽ giúp thấy toàn bộ ảnh mà không mất phần nào.
+       'unset' hoặc bỏ hẳn object-fit cũng giúp ảnh hiển thị tự nhiên hơn trong trường hợp này. */
+    object-fit: contain; 
+}
+
+/* Khu vực nội dung */
+.blog-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
