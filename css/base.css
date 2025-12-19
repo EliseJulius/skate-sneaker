@@ -1,4 +1,3 @@
-
 :root {
     --bg-color: #EEE8DF;
     --secondary-color: #C4BCBD;
@@ -16,25 +15,22 @@ html, body {
 }
 
 body {
-  
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
-/* Dành cho Chrome, Safari và các trình duyệt sử dụng nhân Webkit */
+
 body::-webkit-scrollbar {
   display: none;
 }
 
-/* Dành cho Firefox */
 html {
     overflow-y: scroll;
   scrollbar-width: none;
 }
 
-/* Dành cho Internet Explorer và Edge cũ */
 body {
   -ms-overflow-style: none;
 }
-/* --- HEADER NAVIGATION --- */
+
 header {
   width: 100%;
   height: 72px !important;
@@ -43,14 +39,14 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 80px !important;
-  box-sizing: border-box; /* Ép padding không làm tăng width */
+  box-sizing: border-box; 
   position: sticky; 
   top: 0;           
   z-index: 1000;    
   background-color: #ffffff;
   border-bottom: 1px solid rgba(44, 54, 90, 0.1) !important; 
 }
-/* Logo Alignment */
+
 .logo-link {
   position: absolute;
   left: 50%;
@@ -63,7 +59,6 @@ header {
   object-fit: contain;
 }
 
-/* Nav Links Container */
 header nav {
   display: flex;
   gap: 40px; 
@@ -72,7 +67,6 @@ header nav {
 
 .nav-right { justify-content: flex-end; }
 
-/* Nav Link Items */
 header nav a {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 15px;
@@ -80,12 +74,11 @@ header nav a {
   color: #313D65;
   text-decoration: none;
   text-transform: uppercase;
-  position: relative; /* Base for underline */
+  position: relative; 
   padding: 4px 0;
   transition: color 0.3s ease, opacity 0.2s ease;
 }
 
-/* Underline Animation Effect */
 header nav a::after {
   content: '';
   position: absolute;
@@ -106,7 +99,6 @@ header nav a:hover::after {
   width: 100%;       
 }
 
-/* Active State (Trang hiện tại) */
 header nav a.active {
   font-weight: 700; 
   color: #2C365A;
@@ -116,10 +108,9 @@ header nav a.active::after {
   width: 100%;
 }
 
-/* Trong base.css */
 .nav-right a {
     position: relative;
-    transition: color 0.3s ease; /* Giúp đổi trạng thái mượt hơn */
+    transition: color 0.3s ease; 
 }
 
 .nav-right a.active {
@@ -127,7 +118,6 @@ header nav a.active::after {
     font-weight: 600;
 }
 
-/* Tạo một underline giả để khi active nó không làm nhảy layout */
 .nav-right a.active::after {
     content: '';
     position: absolute;
@@ -137,15 +127,15 @@ header nav a.active::after {
     height: 2px;
     background: #2C365A;
 }
-/* FOOTER WRAPPER */
+
 .footer-logo{
-	display:grid;
-	grid-template-columns:auto 1fr 1fr;
-	margin-bottom: 40px;
-	border-top: 1px solid rgba(44, 54, 90, 0.2);
+  display:grid;
+  grid-template-columns:auto 1fr 1fr;
+  margin-bottom: 40px;
+  border-top: 1px solid rgba(44, 54, 90, 0.2);
     width: 100%;
 }
-/* FOOTER LOGO */
+
 .footer-logo img {
   width: 380px;
   margin-left: 50px;
@@ -170,7 +160,6 @@ header nav a.active::after {
   opacity: 0.6;
 }
 
-/* SOCIAL BLOCK */
 .social-block {
   display: flex;
   flex-direction: column;
@@ -207,7 +196,6 @@ header nav a.active::after {
   margin-top: 40px;
 }
 
-/* FOOTER INFO SECTION */
 .footer-info {
   width: 100%;
   max-width: 1300px;
@@ -217,7 +205,6 @@ header nav a.active::after {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   font-size: 13px;
   color: #2C365A;
 }

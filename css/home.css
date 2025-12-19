@@ -17,7 +17,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Hiệu ứng Reveal */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -29,7 +28,6 @@ body {
     transform: translateY(0);
 }
 
-/* Hero Section */
 .hero {
     width: 100%;
     height: 600px; 
@@ -50,7 +48,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Shopping Button Style */
 .btn-link {
     display: inline-block;
     padding: 18px 45px;
@@ -59,7 +56,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-decoration: none; /* Bỏ gạch chân cũ */
+    text-decoration: none; 
     color: var(--primary-color);
     background-color: transparent;
     border: 2px solid var(--primary-color);
@@ -69,43 +66,40 @@ body {
     transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hiệu ứng nền chạy từ dưới lên khi Hover */
 .btn-link::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 0%; /* Bắt đầu từ 0 bên trái */
+    width: 0%; 
     height: 100%;
     background-color: var(--primary-color);
     z-index: -1;
     transition: width 0.4s ease-in-out;
 }
 
-
-
 .btn-link:hover {
-    color: #ffffff; /* Chữ đổi sang trắng khi nền đã lấp đầy */
-}
-.btn-link:hover::before {
-    width: 100%; /* Chạy ngang sang phải */
+    color: #ffffff; 
 }
 
-/* Thêm hiệu ứng nhích nhẹ nút lên trên */
+.btn-link:hover::before {
+    width: 100%; 
+}
+
 .btn-link:active {
     transform: translateY(2px);
 }
-/* Dual Slider Section (Slider phía trên - Giữ nguyên 800px) */
+
 .dual-slider {
- width: 100%;
+    width: 100%;
     max-width: none; 
     margin: 0;    
     padding: 0;     
 }
 
 .slider-wrapper {
-display: flex;
-    gap: 0;         /* QUAN TRỌNG: Xóa khoảng cách giữa 2 slider */
+    display: flex;
+    gap: 0;         
     width: 100%;
 }
 
@@ -129,7 +123,6 @@ display: flex;
     flex-shrink: 0;
 }
 
-/* Info & Controls dùng chung cho các slider */
 .slider-info {
     position: absolute;
     bottom: 40px;
@@ -150,12 +143,14 @@ display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
-    backdrop-filter: blur(5px);    /* Hiệu ứng kính mờ cho nút (hiện đại) */
+    backdrop-filter: blur(5px);    
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
+
 .next-btn:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
 .next-btn span::before {
     content: '→';
     color: white;
@@ -184,7 +179,6 @@ display: flex;
     background: white;
 }
 
-/* Kids Banner */
 .kids-banner {
     width: 100%;
     height: 400px;
@@ -216,15 +210,14 @@ display: flex;
     font-size: 80px;
     font-style:italic;
     font-weight: 450;
-
 }
+
 .kids-banner p {
     font-size: 14px;
     font-style: italic;
     font-weight:300;
 }
 
-/* --- Hot Pick Section --- */
 .hot-pick {
     width: 100%;
     margin: 0;
@@ -235,7 +228,6 @@ display: flex;
 
 .hot-pick-container {
     width: 100%;
-    /* Bạn có thể giảm con số này xuống 500px hoặc 600px nếu muốn banner gọn hơn */
     height: 550px; 
     position: relative;
 }
@@ -247,13 +239,11 @@ display: flex;
 #slider-hot .slides img {
     width: 100%;
     height: 100%;
-    /* Đổi contain thành cover để ảnh luôn tràn hết khung 686px */
     object-fit: cover; 
     object-position: center center; 
     display: block;
 }
 
-/* Nội dung chữ - Căn giữa theo chiều dọc của ảnh */
 #slider-hot .hot-content {
     position: absolute;
     top: 50%;
@@ -271,7 +261,6 @@ display: flex;
     text-transform: uppercase;
 }
 
-/* Nút Next - Căn giữa theo chiều dọc */
 #slider-hot .next-btn {
     position: absolute;
     top: 50%;
@@ -287,10 +276,9 @@ display: flex;
     z-index: 10;
 }
 
-/* Dấu chấm - Dùng bottom % để luôn nằm trên ảnh dù màn hình to hay nhỏ */
 #slider-hot .dots {
     position: absolute;
-    bottom: 30px; /* Căn cách mép dưới ảnh 30px */
+    bottom: 30px; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
@@ -326,6 +314,7 @@ display: flex;
     background: white;
     color: #313D65;
 }
+
 .blog-banner {
     width: 100%;
     padding: 0;
@@ -336,7 +325,6 @@ display: flex;
     width: 100%; 
     margin: 0;
     max-width: none;
-
 }
 
 .blog-image-wrapper img {
@@ -374,7 +362,6 @@ display: flex;
     padding: 10px 25px;
 }
 
-/* Logo Collab */
 .logos {
     padding: 170px 0;
 }
@@ -391,10 +378,9 @@ display: flex;
     filter: grayscale(1);
     opacity: 0.7;
 }
-/* Chỉ giữ logic ẩn hiện trong reveal */
+
 .reveal {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s ease-out;
 }
-

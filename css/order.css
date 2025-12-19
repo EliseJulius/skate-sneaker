@@ -1,4 +1,8 @@
-
+:root {
+    --primary-color: #313D65;
+    --bg-light: #EFEAE4; 
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .order-container {
     display: flex;
@@ -6,7 +10,7 @@
     margin: 40px auto;
     min-height: 80vh;
     background-color: var(--bg-color);
-	margin-bottom:80px;
+    margin-bottom:80px;
 }
 
 .order-form-section {
@@ -70,7 +74,6 @@
 .btn-submit:hover {
     transform: scale(1.05);
 }
-
 
 .order-summary-section {
     flex: 3; 
@@ -140,7 +143,7 @@
 .section-title.disabled {
     pointer-events: none;
 }
-/* Error Message */
+
 .error-msg {
     color: #c0392b;
     font-size: 12px;
@@ -167,7 +170,6 @@
     padding-left: 15px;
 }
 
-
 @media (max-width: 768px) {
     .input-row {
         flex-direction: column;
@@ -190,7 +192,7 @@
 }
 
 .modal-content {
-    background: #EEE8DF; /* Màu nền palette của bạn */
+    background: #EEE8DF; 
     padding: 40px;
     border-radius: 8px;
     text-align: center;
@@ -235,7 +237,6 @@
     font-size: 14px;
 }
 
-/* CSS cho Size Giày */
 .size-options, .color-options {
     display: flex;
     gap: 10px;
@@ -244,7 +245,7 @@
 
 .size-options input[type="radio"],
 .color-options input[type="radio"] {
-    display: none; /* Ẩn nút tròn mặc định */
+    display: none; 
 }
 
 .size-options label {
@@ -265,7 +266,6 @@
     border-color: #2C365A;
 }
 
-/* CSS cho Màu sắc (Dạng hình tròn) */
 .color-options label {
     width: 30px;
     height: 30px;
