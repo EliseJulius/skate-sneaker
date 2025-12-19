@@ -3,6 +3,8 @@
     --size-banner-sub: 20px;
     --size-section-title: 70px;
     --size-body-text: 16px;
+    --bg-light: #EFEAE4; 
+
 }
 
 
@@ -311,3 +313,4 @@
 .animate-title {
     animation: fadeInUp 1s ease forwards;
 }
+
