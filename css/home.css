@@ -32,7 +32,7 @@ body {
 /* Hero Section */
 .hero {
     width: 100%;
-    height: 916px; 
+    height: 600px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +40,7 @@ body {
 }
 
 .hero h1 {
-    font-size: 80px;
+    font-size: 100px;
     font-weight: 400;
     margin-bottom: 20px;
 }
@@ -50,28 +50,68 @@ body {
     margin-bottom: 30px;
 }
 
+/* Shopping Button Style */
 .btn-link {
+    display: inline-block;
+    padding: 18px 45px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none; /* Bỏ gạch chân cũ */
     color: var(--primary-color);
-    text-decoration: underline;
-    font-weight: 600;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hiệu ứng nền chạy từ dưới lên khi Hover */
+.btn-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%; /* Bắt đầu từ 0 bên trái */
+    height: 100%;
+    background-color: var(--primary-color);
+    z-index: -1;
+    transition: width 0.4s ease-in-out;
+}
+
+
+
+.btn-link:hover {
+    color: #ffffff; /* Chữ đổi sang trắng khi nền đã lấp đầy */
+}
+.btn-link:hover::before {
+    width: 100%; /* Chạy ngang sang phải */
+}
+
+/* Thêm hiệu ứng nhích nhẹ nút lên trên */
+.btn-link:active {
+    transform: translateY(2px);
+}
 /* Dual Slider Section (Slider phía trên - Giữ nguyên 800px) */
 .dual-slider {
-    max-width: 1920px;
-    margin: 0 auto;
-    padding: 0 20px;
+ width: 100%;
+    max-width: none; 
+    margin: 0;    
+    padding: 0;     
 }
 
 .slider-wrapper {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+display: flex;
+    gap: 0;         /* QUAN TRỌNG: Xóa khoảng cách giữa 2 slider */
+    width: 100%;
 }
 
 .slider-box {
-    width: 800px; 
-    height: 800px;
+    flex: 1;        
+    height: 90vh;  
     position: relative;
     overflow: hidden;
 }
@@ -102,17 +142,20 @@ body {
     top: 50%;
     right: 40px;
     width: 60px;
-    height: 60px;
-    border: 2.5px solid white;
+    height: 60px; 
     background: transparent;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 5;
+    z-index: 10;
+    backdrop-filter: blur(5px);    /* Hiệu ứng kính mờ cho nút (hiện đại) */
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
-
+.next-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
 .next-btn span::before {
     content: '→';
     color: white;
@@ -149,7 +192,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 100px 0;
+    margin: 0;
     color: white;
 }
 
@@ -170,57 +213,103 @@ body {
 }
 
 .kids-banner h2 {
-    font-size: 60px;
+    font-size: 80px;
+    font-style:italic;
+    font-weight: 450;
+
+}
+.kids-banner p {
+    font-size: 14px;
+    font-style: italic;
+    font-weight:300;
 }
 
-/* --- Hot Pick Section (Đã cập nhật) --- */
+/* --- Hot Pick Section --- */
 .hot-pick {
     width: 100%;
-    height: 686px; /* Cố định chiều cao đúng file ảnh */
-    position: relative;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
+    background-color: #F2F0EB; 
 }
 
 .hot-pick-container {
-    height: 100%;
     width: 100%;
+    /* Bạn có thể giảm con số này xuống 500px hoặc 600px nếu muốn banner gọn hơn */
+    height: 550px; 
+    position: relative;
 }
 
-/* Đảm bảo ảnh Hot Pick hiện đúng tỉ lệ, không bị zoom chà bá */
+#slider-hot .slides {
+    height: 100%;
+}
+
 #slider-hot .slides img {
-    height: 686px;    
-    width: 100vw;     
-    object-fit: contain; /* Đổi sang contain để hiện trọn vẹn ảnh thiết kế */
-    background-color: #F2F0EB; /* Nền sáng để bù đắp nếu màn hình quá rộng */
+    width: 100%;
+    height: 100%;
+    /* Đổi contain thành cover để ảnh luôn tràn hết khung 686px */
+    object-fit: cover; 
+    object-position: center center; 
+    display: block;
 }
 
-/* Nội dung chữ Hot Pick */
+/* Nội dung chữ - Căn giữa theo chiều dọc của ảnh */
 #slider-hot .hot-content {
     position: absolute;
     top: 50%;
-    left: 8%; 
+    left: 8%;
     transform: translateY(-50%);
     color: white;
     z-index: 10;
 }
 
 #slider-hot .hot-content h2 {
-    font-size: 60px; /* Giảm nhẹ để cân đối với chiều cao 686px */
+    font-size: 90px;
     margin-bottom: 20px;
+    font-weight:450;
     line-height: 1.1;
     text-transform: uppercase;
 }
 
-/* Nút Next của Hot Pick */
+/* Nút Next - Căn giữa theo chiều dọc */
 #slider-hot .next-btn {
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 40px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
 }
 
-/* Dấu chấm của Hot Pick */
+/* Dấu chấm - Dùng bottom % để luôn nằm trên ảnh dù màn hình to hay nhỏ */
 #slider-hot .dots {
-    bottom: 30px;
+    position: absolute;
+    bottom: 30px; /* Căn cách mép dưới ảnh 30px */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    gap: 12px;
+}
+
+#slider-hot .dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#slider-hot .dot.active {
+    background: #ffffff;
+    transform: scale(1.2);
 }
 
 .btn-discover {
@@ -230,29 +319,24 @@ body {
     color: white;
     text-decoration: none;
     transition: 0.3s;
+    font-weight: 500;
 }
 
 .btn-discover:hover {
     background: white;
-    color: var(--primary-color);
+    color: #313D65;
 }
-
-/* --- Blog Banner (Mở rộng chiều rộng để giảm nền trắng 2 bên) --- */
 .blog-banner {
-    padding: 100px 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    padding: 0;
 }
 
 .blog-image-wrapper {
     position: relative;
-    /* Tăng width từ 90% lên 100% để sát lề hoặc 96% để còn một chút khoảng hở */
     width: 100%; 
-    /* Tăng max-width để ảnh có thể nở to ra trên màn hình lớn */
-    max-width: 1920px; 
-    margin: 0 auto;
-    overflow: hidden;
+    margin: 0;
+    max-width: none;
+
 }
 
 .blog-image-wrapper img {
@@ -272,13 +356,14 @@ body {
 }
 
 .blog-text h3 {
-    font-size: 32px;
+    font-size: 40px;
     margin-bottom: 15px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .blog-text p {
-    font-size: 18px;
+    font-size: 13px;
+    font-weight:300;
     margin-bottom: 25px;
     max-width: 450px;
     line-height: 1.5;
@@ -291,8 +376,7 @@ body {
 
 /* Logo Collab */
 .logos {
-    padding: 100px 0;
-    background: white;
+    padding: 170px 0;
 }
 
 .logo-container {
@@ -303,7 +387,14 @@ body {
 }
 
 .logo-container img {
-    height: 40px;
+    height: 220px;
     filter: grayscale(1);
     opacity: 0.7;
 }
+/* Chỉ giữ logic ẩn hiện trong reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
