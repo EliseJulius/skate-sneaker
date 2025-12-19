@@ -1,6 +1,6 @@
 :root {
     --primary-color: #313D65;
-    --bg-light: #F2F0EB; 
+    --bg-light: #EFEAE4; 
     --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -39,7 +39,7 @@ body {
 
 /* --- Khu vực nội dung --- */
 .blog-content {
-    max-width: 1100px;
+    max-width: 1340px;
     margin: 60px auto; 
     padding: 0 20px;
     text-align: center;
@@ -58,12 +58,12 @@ body {
 .description {
     font-size: 20px;
     font-weight: 400;
-    line-height: 1.1; 
+    line-height: 0.8; 
     margin-top: 0;   
-    margin-bottom: 40px; 
+    margin-bottom: 80px; 
     opacity: 0.9;
     white-space: pre-line;
-    max-width: 850px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -93,8 +93,8 @@ body {
 /* --- Journey Layout Section (Phần của Kha) --- */
 .journey-layout {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr; 
-    gap: 40px;
+    grid-template-columns: 1fr 0.9fr; 
+    gap: 25px;
     margin-top: 60px;
     text-align: left; 
 }
@@ -111,18 +111,21 @@ body {
 
 .journey-left .image-wrapper img {
     width: 100%;
-    height: 450px; 
-    object-fit: cover;
-    display: block;
 }
 
 .journey-subtitle {
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 570;
+    font-style:italic;
     margin-bottom: 25px;
     color: var(--primary-color);
 }
-
+.journey-main-text{
+    font-size: 16px;
+    margin-bottom: 54px;
+    font-weight: 320;
+    color:black;
+}
 .journey-text-content p {
     font-size: 15px;
     line-height: 1.6;
@@ -137,6 +140,7 @@ body {
     font-weight: 400;
 }
 
+
 /* Cột phải - Ảnh dọc */
 .journey-right .image-wrapper-tall {
     width: 100%;
@@ -146,14 +150,13 @@ body {
 .journey-right .image-wrapper-tall img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
 }
 
 /* --- Layout mới cho nhân vật Mỹ (CẬP NHẬT TẠI ĐÂY) --- */
 .journey-layout-alt {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr; 
+    grid-template-columns: 1fr 1fr; 
     gap: 60px;
     margin-bottom: 100px;
     text-align: left;
@@ -162,7 +165,7 @@ body {
 
 .layout-alt-left .image-wrapper-main img {
     width: 100%;
-    height: 100%; /* Đảm bảo ảnh chiếm hết chiều cao grid */
+    height: 100%; 
     object-fit: cover;
     display: block;
 }
@@ -178,16 +181,20 @@ body {
     flex-direction: column;
     justify-content: space-between; /* Đẩy main-text lên trên và author-info xuống đáy */
     height: 100%;
+    font-weight:350px;
 }
 
-.author-info {
-    margin-top: auto; /* Đảm bảo luôn nằm ở đáy container */
-    padding-top: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    opacity: 0.8;
+/* Tác động vào các thẻ p nằm trong wrapper chứa nội dung của Mỹ */
+.journey-layout-alt .journey-text-wrapper p {
+    color: black; /* Đây là màu nội dung bạn muốn thay đổi */
+    line-height: 1.6;
+    font-weight:320;
 }
+.author-info{
+    font-size:20px;
+    font-weight:460;
 
+}
 /* --- Các thành phần bổ trợ khác --- */
 .wide-separator {
     width: 100%;
@@ -233,24 +240,4 @@ body {
 
 .blog-footer-cta a:hover {
     opacity: 0.7; /* Hiệu ứng nhẹ khi di chuột vào */
-}
-
-/* --- Responsive cho điện thoại --- */
-@media (max-width: 768px) {
-    .journey-layout, .journey-layout-alt {
-        grid-template-columns: 1fr;
-    }
-    
-    .journey-right {
-        order: -1; 
-    }
-
-    .journey-left .image-wrapper img, 
-    .journey-right .image-wrapper-tall img {
-        height: 400px;
-    }
-
-    .wide-separator {
-        margin: 40px 0;
-    }
 }
