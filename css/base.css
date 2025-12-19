@@ -16,13 +16,29 @@ html, body {
 }
 
 body {
+  
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
+/* Dành cho Chrome, Safari và các trình duyệt sử dụng nhân Webkit */
+body::-webkit-scrollbar {
+  display: none;
+}
 
+/* Dành cho Firefox */
+html {
+    overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+/* Dành cho Internet Explorer và Edge cũ */
+body {
+  -ms-overflow-style: none;
+}
 /* --- HEADER NAVIGATION --- */
 header {
   width: 100%;
   height: 72px !important;
+  min-height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,7 +48,6 @@ header {
   top: 0;           
   z-index: 1000;    
   background-color: #ffffff;
-  /* Ép border về 1px chuẩn để tránh lỗi 1.111px */
   border-bottom: 1px solid rgba(44, 54, 90, 0.1) !important; 
 }
 /* Logo Alignment */
