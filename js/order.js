@@ -1,35 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     handleUrlParameters();
     handleFormValidation();
-    handleLiveUpdate(); // Gọi hàm cập nhật trực tiếp
+    handleLiveUpdate();
 
     function formatVND(amount) {
         return new Intl.NumberFormat('vi-VN').format(amount) + ' VNĐ';
     }
 
-    // --- HÀM CẬP NHẬT TRỰC TIẾP ---
     function handleLiveUpdate() {
         const sizeInputs = document.querySelectorAll('input[name="size"]');
         const colorInputs = document.querySelectorAll('input[name="color"]');
         const summaryMeta = document.getElementById('summary-meta');
 
         function updateMeta() {
-            // Lấy giá trị của size đang check
             const selectedSize = document.querySelector('input[name="size"]:checked')?.value || '--';
-            
-            // Lấy giá trị của màu đang check
             const selectedColor = document.querySelector('input[name="color"]:checked')?.value || '--';
-
-            // Cập nhật text hiển thị ở Summary
             summaryMeta.innerText = `Color: ${selectedColor} | Size: ${selectedSize}`;
         }
 
-        // Lắng nghe thay đổi trên tất cả input Size
         sizeInputs.forEach(input => {
             input.addEventListener('change', updateMeta);
         });
 
-        // Lắng nghe thay đổi trên tất cả input Màu
         colorInputs.forEach(input => {
             input.addEventListener('change', updateMeta);
         });
@@ -60,10 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (productImg) document.getElementById('summary-img').src = productImg;
             
-            // Hiển thị ban đầu từ URL
             document.getElementById('summary-meta').innerText = `Color: ${productColor || '--'} | Size: ${productSize || '--'}`;
 
-            // Tự động tích chọn nếu có data từ URL
             if (productSize) {
                 const sizeInput = document.querySelector(`input[name="size"][value="${productSize}"]`);
                 if (sizeInput) sizeInput.checked = true;
@@ -92,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = document.getElementById('fullname').value.trim();
             const phone = document.getElementById('phone').value.trim();
 
-            // Validate tên tiếng Việt (bao gồm cả dấu)
             const nameRegex = /^[a-zA-ZÀ-ỹ\s]+$/;
             if (!nameRegex.test(name)) {
                 alert("Vui lòng nhập họ tên hợp lệ.");
@@ -111,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.innerText = "ĐANG XỬ LÝ...";
                 submitBtn.disabled = true;
 
-                // Giả lập gửi đơn hàng
                 setTimeout(() => {
                     if(modal) modal.style.display = 'flex';
                     this.reset();
