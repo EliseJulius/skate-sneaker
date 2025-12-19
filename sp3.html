@@ -17,21 +17,29 @@
 
        <!-- HEADER -->
 <header>
-  <!-- LOGO CENTER -->
   <a href="index.html" class="logo-link">
-    <img
-      src="media/logo/Artboard_14x.png"
-      alt="Skate Logo"
-      class="logo"
-    />
+    <img src="media/logo/Artboard_14x.png" alt="Skate Logo" class="logo" />
   </a>
-  <!-- RIGHT NAV -->
   <nav class="nav-right">
-	<a href="san-pham.html">Products</a>
+    <a href="san-pham.html">Products</a>
     <a href="blog.html">Lifestyle</a>
-	<a href="aboutus.html">About us</a>
+    <a href="aboutus.html">About us</a>
     <a href="order.html">Order</a>
   </nav>
+
+  <script>
+    (function() {
+      const currentPath = window.location.pathname.split("/").pop() || "index.html";
+      const navLinks = document.querySelectorAll('.nav-right a');
+      
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (linkPath === currentPath || (currentPath === "index.html" && linkPath === "/")) {
+          link.classList.add('active');
+        }
+      });
+    })();
+  </script>
 </header>
 
     <div class="container">

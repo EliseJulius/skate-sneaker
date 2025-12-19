@@ -100,6 +100,28 @@ header nav a.active {
 header nav a.active::after {
   width: 100%;
 }
+
+/* Trong base.css */
+.nav-right a {
+    position: relative;
+    transition: color 0.3s ease; /* Giúp đổi trạng thái mượt hơn */
+}
+
+.nav-right a.active {
+    color: #2C365A;
+    font-weight: 600;
+}
+
+/* Tạo một underline giả để khi active nó không làm nhảy layout */
+.nav-right a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #2C365A;
+}
 /* FOOTER WRAPPER */
 .footer-logo{
 	display:grid;

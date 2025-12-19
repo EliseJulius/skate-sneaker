@@ -1,24 +1,19 @@
+// script.js
 document.addEventListener('DOMContentLoaded', function() {
-    // TỰ ĐỘNG ACTIVE TAB TRÊN HEADER
-    function setActiveTab() {
-        // Lấy tên file hiện tại, ví dụ: "contact.html"
-        const currentPath = window.location.pathname.split("/").pop(); 
-        const navLinks = document.querySelectorAll('header nav a');
-
-        navLinks.forEach(link => {
-            const linkPath = link.getAttribute('href');
-            
-            // Xóa class active cũ nếu có
-            link.classList.remove('active');
-
-            // Nếu tên file khớp hoặc trường hợp trang chủ
-            if (linkPath === currentPath) {
-                link.classList.add('active');
-            } else if ((currentPath === "" || currentPath === "index.html") && linkPath === "index.html") {
-                link.classList.add('active');
+    // Chỉ xử lý các hiệu ứng cuộn hoặc tương tác phức tạp ở đây
+    const reveals = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+        for (let i = 0; i < reveals.length; i++) {
+            let windowHeight = window.innerHeight;
+            let elementTop = reveals[i].getBoundingClientRect().top;
+            let elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
             }
-        });
-    }
+        }
+    };
 
-    setActiveTab();
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll(); // Chạy ngay lần đầu
 });
